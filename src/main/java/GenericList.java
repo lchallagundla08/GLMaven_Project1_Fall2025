@@ -1,8 +1,7 @@
 // File: GenericList.java
 // Author: Lakshmi Sanjana Challagundla,lchal3,lchal3@uic.edu
-// Description: Abstract generic singly linked list providing core functionality
-// for CS 342 Project #1 Fall 2025.
-//
+// Description:
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
