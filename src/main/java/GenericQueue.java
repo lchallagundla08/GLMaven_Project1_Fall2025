@@ -8,6 +8,11 @@ public class GenericQueue<T> extends GenericList<T> {
     // The last node in the list (tail of the queue)
     private Node<T> tail;
 
+    //default
+    public GenericQueue() {
+        this.tail = null;
+    }
+
     // Constructor
     public GenericQueue(T data) {
         Node<T> firstNode = new Node<>(data);
@@ -49,30 +54,15 @@ public class GenericQueue<T> extends GenericList<T> {
     @Override
     public T delete() {
         if (getLength() == 0) {
-            return null; // nothing to delete
+            return null;
         }
 
-        // If there is only one node, reset head and tail
-        if (getLength() == 1) {
-            T data = getHead().data;
+        T data = getHead().data;
+        setHead(getHead().next);
 
-            setHead(null);
+        if (getHead() == null) {
             tail = null;
-            setLength(0);
-            return data;
         }
-
-        // Otherwise, walk the list to find the node before the tail
-        Node<T> curr = getHead();
-        while (curr.next != tail) {
-            curr = curr.next;
-        }
-
-        // Now curr is the node before tail
-        T data = tail.data;
-        tail = curr;
-        tail.next = null;
-
         setLength(getLength() - 1);
         return data;
     }
