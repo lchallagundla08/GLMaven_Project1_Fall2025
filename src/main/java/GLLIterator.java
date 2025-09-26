@@ -1,37 +1,6 @@
 
 //Name: Neha Kamat
 //File: GLLIterator
-
-import java.util.ArrayList;
-/*
-public class GLLIterator {
-
-
-    //variables tracks the curr pos and the reference for the list
-    private final GenericList list;
-    private int index = 0;
-
-    public GLLIterator(GenericList srcList) {
-        listRef = srcList;
-    }
-
-    public boolean hasNext(){
-        if(listRef == null){
-            return false;
-        }
-        return index != listRef.size();
-    }
-
-    public Object next(){
-        if(!hasNext()){
-            return null;
-        }
-        Object value = listRef.get(index);
-        index = index + 1;
-        return value;
-    } */
-
-    // File: GLLIterator.java
 // Author: CS 342 Project #1 Fall 2025
 // Description: Iterator for GenericList that traverses from head to tail
 
