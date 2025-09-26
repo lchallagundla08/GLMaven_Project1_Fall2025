@@ -8,10 +8,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-
 public abstract class GenericList<T> implements Iterable<T> {
 
-    //The first node in list
+    //The first node in listg
     private Node<T> head;
     //Total num of nodes in list
     private int length;
