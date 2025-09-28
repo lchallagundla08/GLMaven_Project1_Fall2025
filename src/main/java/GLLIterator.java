@@ -21,7 +21,6 @@ public class GLLIterator<T> implements Iterator<T> {
     }
 
     //Checks if there are more elements to iterate over
-    @Override
     public boolean hasNext() {
         if (listRef == null) {
             return false;
@@ -30,7 +29,6 @@ public class GLLIterator<T> implements Iterator<T> {
     }
 
     //Returns the next element in the iteration
-    @Override
     public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException("No more elements in the iteration");
