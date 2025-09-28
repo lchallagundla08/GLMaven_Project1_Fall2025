@@ -123,35 +123,3 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         return index < 0;
     }
 }
-/*
-public class ReverseGLLIterator {
-
-    private final GenericList listRef;
-    private int index;
-
-    public ReverseGLLIterator(GenericList srcList) {
-        listRef = srcList;
-
-        if(listRef == null){
-            index = -1;
-        }
-        else{
-            index = listRef.size() - 1;
-        }
-    }
-
-    public boolean hasNext(){
-        return index != -1;
-    }
-
-    public Object next(){
-        if(!hasNext()){
-            return null;
-        }
-        Object value = listRef.get(index);
-        index = index - 1;
-        return value;
-    }
-
-}
-*/

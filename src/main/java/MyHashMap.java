@@ -1,7 +1,6 @@
 // File: GenericQueue.java
 // Author: Lakshmi Sanjana Challagundla,lchal3,lchal3@uic.edu
 // Description:
-//
 
 
 import java.util.ArrayList;
