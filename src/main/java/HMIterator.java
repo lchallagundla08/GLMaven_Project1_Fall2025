@@ -1,4 +1,4 @@
-//Neha Kamat
+//Name: Neha Kamat, nkama4, nkama4@uic.edu
 // File: HMIterator.java
 // Author: CS 342 Project #1 Fall 2025
 // Description: Iterator for MyHashMap that traverses through all values
@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-//Iterator for MyHashMap that provides traversal through all values
-//Iterates through each bucket and then through each queue in the bucket
+//Iterator for MyHashMap that traverses through all the values and then iterates through each bucket
 public class HMIterator<T> implements Iterator<T> {
 
     // List of all buckets in the hash map
@@ -39,7 +38,7 @@ public class HMIterator<T> implements Iterator<T> {
         moveToNextBucket();
     }
 
-    //Calculate the total number of elements in all buckets
+    //Calculates the total number of elements in all buckets
     private int calculateTotalSize() {
         int size = 0;
         for (GenericQueue<T> bucket : buckets) {
@@ -50,21 +49,19 @@ public class HMIterator<T> implements Iterator<T> {
         return size;
     }
 
-    //Move to the next bucket that contains a non-empty queue
+    //Moves to the next bucket that contains a non-empty queue
     private void moveToNextBucket() {
-        // Move to next bucket
         bucketIndex++;
         currentQueueIterator = null;
 
-        // Find the next bucket with a non-empty queue
         while (bucketIndex < buckets.size()) {
             GenericQueue<T> currentBucket = buckets.get(bucketIndex);
 
-            // If bucket is not null and has elements, get its iterator
+            // If bucket is not null and has elements, then its iterated through
             if (currentBucket != null && currentBucket.getLength() > 0) {
                 currentQueueIterator = currentBucket.iterator();
 
-                // If the iterator has elements, we're ready
+                //ietrates through if it has already existing elemnts
                 if (currentQueueIterator.hasNext()) {
                     return;
                 }
@@ -79,19 +76,15 @@ public class HMIterator<T> implements Iterator<T> {
     }
 
     //Checks if there are more elements to iterate over
-    @Override
     public boolean hasNext() {
         // If we don't have a current iterator, no more elements
         if (currentQueueIterator == null) {
             return false;
         }
 
-        //If current iterator has elements, return true
         if (currentQueueIterator.hasNext()) {
             return true;
         }
-
-        //Current iterator is exhausted, try to move to next bucket
         moveToNextBucket();
 
         // Check if we found another bucket with elements
@@ -99,7 +92,6 @@ public class HMIterator<T> implements Iterator<T> {
     }
 
     //Returns the next element in the iteration
-    @Override
     public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException("No more elements in the hash map iteration");

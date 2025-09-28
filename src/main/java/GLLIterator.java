@@ -1,4 +1,4 @@
-//Name: Neha Kamat
+//Name: Neha Kamat, nkama4, nkama4@uic.edu
 //File: GLLIterator
 // Author: CS 342 Project #1 Fall 2025
 // Description: Iterator for GenericList that traverses from head to tail
@@ -6,17 +6,12 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/**
- * Iterator for GenericList that provides forward traversal (head to tail)
- * Implements the Iterator interface for standard iteration behavior
- * This is a standalone iterator class that can be used externally
- * @param <T> the type of elements returned by this iterator
- */
+//Iterator for GenericList that provides traverses from the head to tail
 public class GLLIterator<T> implements Iterator<T> {
 
     // Reference to the GenericList being iterated
     private final GenericList<T> listRef;
-    // Current index position in the iteration
+    // Current index position
     private int index;
 
     //Constructor for GLLIterator

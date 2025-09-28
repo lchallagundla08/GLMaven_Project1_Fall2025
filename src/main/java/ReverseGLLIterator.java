@@ -1,6 +1,4 @@
-//Name: Neha Kamat
-//File:ReverseGLLiterator
-
+//Name: Neha Kamat, nkama4, nkama4@uic.edu
 // File: ReverseGLLIterator.java
 // Author: CS 342 Project #1 Fall 2025
 // Description: Iterator for GenericList that traverses from tail to head
@@ -8,12 +6,7 @@
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-/**
- * Iterator for GenericList that provides reverse traversal (tail to head)
- * Implements the Iterator interface for standard iteration behavior
- * This is a standalone iterator class that can be used externally
- * @param <T> the type of elements returned by this iterator
- */
+//Iterator for GenericList that reverses backwards from tail to head
 public class ReverseGLLIterator<T> implements Iterator<T> {
 
     // Reference to the GenericList being iterated
@@ -21,10 +14,7 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
     // Current index position in the reverse iteration (starts from end)
     private int index;
 
-    /**
-     * Constructor for ReverseGLLIterator
-     * @param srcList the GenericList to iterate over in reverse
-     */
+    //Constructor for ReverseGLLIterator
     public ReverseGLLIterator(GenericList<T> srcList) {
         this.listRef = srcList;
 
@@ -36,21 +26,12 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         }
     }
 
-    /**
-     * Checks if there are more elements to iterate over in reverse
-     * @return true if there are more elements, false otherwise
-     */
-    @Override
+    //Checks if there are more elements to iterate over in reverse
     public boolean hasNext() {
         return index >= 0;
     }
 
-    /**
-     * Returns the next element in the reverse iteration
-     * @return the next element going backwards
-     * @throws NoSuchElementException if there are no more elements
-     */
-    @Override
+    //Returns the next element in the reverse iteration
     public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException("No more elements in the reverse iteration");
@@ -60,10 +41,7 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         return value;
     }
 
-    /**
-     * Resets the iterator to the end of the list (for reverse iteration)
-     * This is a convenience method not in the standard Iterator interface
-     */
+    //Resets the iterator to the end of the list
     public void reset() {
         if (listRef == null || listRef.getLength() == 0) {
             this.index = -1;
@@ -72,18 +50,12 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         }
     }
 
-    /**
-     * Gets the current position in the reverse iteration
-     * @return the current index
-     */
+    //Gets the current position in the reverse iteration
     public int getCurrentIndex() {
         return index;
     }
 
-    /**
-     * Checks if the iterator has a previous element (in reverse context, this means forward)
-     * @return true if there is a previous element
-     */
+    //Checks if the iterator has a previous element so if the next forward element exists
     public boolean hasPrevious() {
         if (listRef == null) {
             return false;
@@ -91,11 +63,7 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         return index < (listRef.getLength() - 1);
     }
 
-    /**
-     * Returns the previous element in reverse iteration context (moves forward in the list)
-     * @return the previous element
-     * @throws NoSuchElementException if there are no previous elements
-     */
+    //Returns the previous element in reverse iteration context
     public T previous() {
         if (!hasPrevious()) {
             throw new NoSuchElementException("No previous elements in the reverse iteration");
@@ -104,10 +72,7 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         return listRef.get(index);
     }
 
-    /**
-     * Checks if we're at the beginning of the reverse iteration (last element of list)
-     * @return true if at the start of reverse iteration
-     */
+    //Checks if we're at the beginning of the reverse iteration
     public boolean isAtStart() {
         if (listRef == null || listRef.getLength() == 0) {
             return true;
@@ -115,10 +80,7 @@ public class ReverseGLLIterator<T> implements Iterator<T> {
         return index == (listRef.getLength() - 1);
     }
 
-    /**
-     * Checks if we're at the end of the reverse iteration (first element of list)
-     * @return true if at the end of reverse iteration
-     */
+    //Checks if we're at the end of the reverse iteration
     public boolean isAtEnd() {
         return index < 0;
     }
