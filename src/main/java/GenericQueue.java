@@ -1,19 +1,18 @@
 // File: GenericQueue.java
 // Author: Lakshmi Sanjana Challagundla,lchal3,lchal3@uic.edu
-// Description:
-//
+// Description: The class is a generic queue using the singly-linked list structure inherited from GenericList,
 
 public class GenericQueue<T> extends GenericList<T> {
 
-    // The last node in the list (tail of the queue)
+    //The last node in the list
     private Node<T> tail;
 
-    //default
+    //Default
     public GenericQueue() {
         this.tail = null;
     }
 
-    // Constructor
+    //Constructor
     public GenericQueue(T data) {
         Node<T> firstNode = new Node<>(data);
 
@@ -22,7 +21,7 @@ public class GenericQueue<T> extends GenericList<T> {
         setLength(1);
     }
 
-    // Add a new node at the end of the queue
+    //Add a new node at the end of the queue
     @Override
     public void add(T data) {
         Node<T> newNode = new Node<>(data);
@@ -46,11 +45,12 @@ public class GenericQueue<T> extends GenericList<T> {
             tail.next = newNode;
         }
         tail = newNode;
+
         setLength(getLength() + 1);
     }
 
 
-    // Delete the last node in the queue and return its value
+    //Delete the last node in the queue then return its value
     @Override
     public T delete() {
         if (getLength() == 0) {
@@ -64,15 +64,16 @@ public class GenericQueue<T> extends GenericList<T> {
             tail = null;
         }
         setLength(getLength() - 1);
+
         return data;
     }
 
-    // Enqueue = add to the back of the queue
+    //Enqueue
     public void enqueue(T data) {
         add(data);
     }
 
-    // // Dequeue = delete->removes the last node
+    //Dequeue
     public T dequeue() {
         return delete();
     }

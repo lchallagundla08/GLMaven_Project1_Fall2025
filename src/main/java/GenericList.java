@@ -1,12 +1,10 @@
 // File: GenericList.java
 // Author: Lakshmi Sanjana Challagundla,lchal3,lchal3@uic.edu
-// Description:
-
+// Description: The class provides the foundational structure for a generic singly-linked list
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
 
 public abstract class GenericList<T> implements Iterable<T> {
 
@@ -17,18 +15,18 @@ public abstract class GenericList<T> implements Iterable<T> {
 
     //Inner Node class
     protected static class Node<T> {
-        T data;        // the value stored in the node
-        int code;      // an optional number you can use
-        Node<T> next;  // the next node in the list
+        T data;        //Value stored in the node
+        int code;      //Optional
+        Node<T> next;  //Next node
 
-        // Make a node with just data
+        //node with just data
         Node(T data) {
             this.data = data;
             this.code = 0;
             this.next = null;
         }
 
-        // Make a node with data and a code
+        //node with data and a code
         Node(T data, int code) {
             this.data = data;
             this.code = code;
@@ -42,19 +40,18 @@ public abstract class GenericList<T> implements Iterable<T> {
         length = 0;
     }
 
-    //Print out all items in the list, If there are none, print "Empty List"
-    // Print out all the items in the list without using the iterator
+    //Print out all items in the list, If there are none -> print "Empty List"
     public void print() {
         if (length == 0) {
             System.out.println("Empty List");
             return;
         }
 
-        Node<T> current = head;
+        Node<T> curr = head;
 
-        while (current != null) {
-            System.out.println(current.data);
-            current = current.next;
+        while (curr != null) {
+            System.out.println(curr.data);
+            curr = curr.next;
         }
     }
 
@@ -101,40 +98,39 @@ public abstract class GenericList<T> implements Iterable<T> {
     }
 
     //Getters and setters
-    //Get how many items are in the list
     public int getLength() {
         return length;
     }
 
-    //Change how many items are in the list (used inside the class)
+
     protected void setLength(int length) {
         this.length = length;
     }
 
-    //Get the first node in the list
+
     protected Node<T> getHead() {
         return head;
     }
 
-    //Change the first node in the list
+
     protected void setHead(Node<T> head) {
         this.head = head;
     }
 
 
 
-    //This makes the list work with "for-each" loops
+
     @Override
     public Iterator<T> iterator() {
         return new GLLIterator();
     }
 
-    //Return an iterator that goes backwards (last to first)
+    //Returns backwards iterator
     public Iterator<T> descendingIterator() {
         return new ReverseGLLIterator();
     }
 
-    //Iterator that goes forward (first to last)
+    //The iterator that goes forward
     private class GLLIterator implements Iterator<T> {
         private Node<T> curr = head;
 
@@ -155,7 +151,7 @@ public abstract class GenericList<T> implements Iterable<T> {
 
     }
 
-    //Iterator that goes backward (last to first)
+    //Reverse Iterator
     private class ReverseGLLIterator implements Iterator<T> {
         private final ArrayList<T> reversed;
         private int cursor;

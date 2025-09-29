@@ -1,8 +1,8 @@
-// File: GenericQueue.java
+// File: MyHashMap.java
 // Author: Lakshmi Sanjana Challagundla,lchal3,lchal3@uic.edu
-// Description:
-//
-
+// Description: The class implements a hash map data structure using separate chaining with a fixed capacity of 10 (indices 0-9),
+// where each bucket in the underlying ArrayList is a GenericQueue<T> that stores the values, and the hash code of the
+// String key is used as an optional code within the queue's nodes to uniquely identify and manage key-value pairs.
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -48,18 +48,18 @@ public class MyHashMap<T> implements Iterable<T> {
             GenericQueue<T> existingQueue = map.get(hashValue);
 
 
-            GenericList.Node<T> current = existingQueue.getHead();
+            GenericList.Node<T> curr = existingQueue.getHead();
             boolean keyExists = false;
 
-            while (current != null) {
+            while (curr != null) {
 
-                if (current.code == key.hashCode()) {
+                if (curr.code == key.hashCode()) {
 
-                    current.data = value;
+                    curr.data = value;
                     keyExists = true;
                     break;
                 }
-                current = current.next;
+                curr = curr.next;
             }
 
 
@@ -85,12 +85,12 @@ public class MyHashMap<T> implements Iterable<T> {
         }
 
         // Search through the queue to find a matching hash code.
-        GenericList.Node<T> current = queue.getHead();
-        while (current != null) {
-            if (current.code == key.hashCode()) {
+        GenericList.Node<T> curr = queue.getHead();
+        while (curr != null) {
+            if (curr.code == key.hashCode()) {
                 return true;
             }
-            current = current.next;
+            curr = curr.next;
         }
 
         return false; //eld of queue, key not found.
@@ -107,13 +107,13 @@ public class MyHashMap<T> implements Iterable<T> {
         }
 
         // Search through the chain/queue for the matching hash code.
-        GenericList.Node<T> current = queue.getHead();
-        while (current != null) {
-            if (current.code == key.hashCode()) {
+        GenericList.Node<T> curr = queue.getHead();
+        while (curr != null) {
+            if (curr.code == key.hashCode()) {
 
-                return (T) current.data;
+                return (T) curr.data;
             }
-            current = current.next;
+            curr = curr.next;
         }
 
         return null;
@@ -140,16 +140,16 @@ public class MyHashMap<T> implements Iterable<T> {
             return null;
         }
 
-        GenericList.Node<T> current = queue.getHead();
-        while (current != null) {
-            if (current.code == key.hashCode()) {
+        GenericList.Node<T> curr = queue.getHead();
+        while (curr != null) {
+            if (curr.code == key.hashCode()) {
 
-                T oldValue = (T) current.data;
+                T oldValue = (T) curr.data;
 
-                current.data = value; // Set the new value.
+                curr.data = value; // Set the new value.
                 return oldValue; // Return the original value.
             }
-            current = current.next;
+            curr = curr.next;
         }
 
         return null;
@@ -158,8 +158,7 @@ public class MyHashMap<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        // We can't use this yet because we haven't written the HMIterator class!
-        throw new UnsupportedOperationException("HMIterator not implemented yet");
+        return new HMIterator<>(map);
     }
 
 
